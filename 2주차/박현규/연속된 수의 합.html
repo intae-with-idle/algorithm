@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function solution(num, total) {
+    const answer = [];
+    let startNumber = 0;
+    let sum = 0;
+    
+    for(let i = 0; i < num; i++) {
+        sum += i;
+    }    
+    
+    if(total - sum  !== 0) {
+        const ratio = (total - sum) / num;
+        startNumber = startNumber + ratio;
+    }   
+    
+    for(let i = 0; i < num; i++) {
+        answer[i] = startNumber + i
+    }    
+    
+    return answer;
+}
+    </script>
+</body>
+</html>
