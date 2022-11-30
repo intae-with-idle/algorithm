@@ -7,25 +7,24 @@
 <body>
     <script>
         function solution(num, total) {
-    const answer = [];
-    let startNumber = 0;
-    let sum = 0;
+            const result = [];
+            let startNumber = 0;
+            let sum = 0;
     
-    for(let i = 0; i < num; i++) {
-        sum += i;
-    }    
+            for(let i = 0; i < num; i++) {
+                sum += i;
+            }    
+            
+            if(total !== sum) {
+                startNumber = startNumber + (total - sum) / num;
+            }   
+            
+            for(let i = 0; i < num; i++) {
+                result[i] = startNumber + i
+            }    
     
-    if(total - sum  !== 0) {
-        const ratio = (total - sum) / num;
-        startNumber = startNumber + ratio;
-    }   
-    
-    for(let i = 0; i < num; i++) {
-        answer[i] = startNumber + i
-    }    
-    
-    return answer;
-}
+            return result;
+        }
     </script>
 </body>
 </html>

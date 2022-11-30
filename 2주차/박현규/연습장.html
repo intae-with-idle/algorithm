@@ -6,22 +6,20 @@
 </head>
 <body>
     <script>
-        function solution(num, total) {
-            const answer = [];
-            let middleNumber = 0;
+        function solution(A,B) {
+            let arr = [...A]
 
-            if(num % 2 == true) {
-                let middleNumber = total/num           
-                for(i=0; i<num; i++) {
-                    average(answer[i]) = middleNumber
+            for(i=0; i<arr.length; i++) {
+                if(A == B) {
+                    return i
+                } else {
+                    arr.unshift(arr.pop())
                 }
-            } else {
-                let middleNumber = total/num - 0.5
-                for(i=0; i<num; i++) {
-                    answer[i] = middleNumber-3
+                if(arr.join('') == B) {
+                    return i+1
                 }
             }
-        return answer;
+            return -1
         }
     </script>
 </body>
