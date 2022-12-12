@@ -1,17 +1,14 @@
 function solution(s) {
-    let stringToArray = s.split('')
-    let list = [];
-    let result = list.join('')
+    let result = s;
 
-    for (i = 0; i < stringToArray.length; i++) {
-        for (j = 0; j < stringToArray.length; j++) {
-            if (i !== j && stringToArray[i] == stringToArray[j]) {
+    for (i = 0; i < s.length; i++) {
 
-            } else {
-                list.push(stringToArray[i])
+        for (j = 0; j < s.length; j++) {
+
+            if (i !== j && s[i] == s[j]) {
+                result = result.replaceAll(s[i], '')
             }
         }
     }
-
-    return result;
+    return result.split('').sort().join('')
 }
