@@ -1,22 +1,39 @@
-let canBabbling = ['aya', 'ye', 'woo', 'ma']
+function solution(id_list, report, k) {
+    let result = [];
+    let reportSet = Array.from(new Set(report));
+    let reportSetContainer = [];
+    let attackeders = [];
+    let attackers = [];
+    
+    for (let i = 0; i < reportSet.length; i++) {
+        let reporters = reportSet[i].split(' ')
+        reportSetContainer.push(reporters);
+        attackers.push(reporters[1])
+        
+    }
+        const checked = {};
+        attackers.forEach((x) => {
+            checked[x] = (checked[x] || 0) + 1;
+        });
 
-function solution(babbling) {
-    let result = 0;
-
-    for (i = 0; i < babbling.length; i++) {
-        let newBabbling = JSON.parse(JSON.stringify(babbling[i]));
-
-        for (j = 0; j < canBabbling.length; j++) {
-            let replace_babble = newBabbling.replaceAll(canBabbling[j], '*')
-
-            if (!replace_babble.includes('**')) {
-                babbling[i] = babbling[i].replaceAll(canBabbling[j], '*')
-            }
-            if (babbling[i].replaceAll('*', '') == 0) {
-                result += 1
-                break;
+        for (let j = 0; j < id_list.length; j++) {
+            for (let i = 0; i < reportSet.length; i++) {
+                if (checked[id_list[j]] >= k && reportSetContainer[i][1] == id_list[j]) {
+                    attackeders.push(reportSetContainer[i][0])
+                }
             }
         }
+        const semiResult = {};
+        attackeders.forEach((x) => { 
+          semiResult[x] = (semiResult[x] || 0)+1; 
+        });
+
+    for (let j = 0; j < id_list.length; j++) {
+        if (semiResult[id_list[j]] == undefined) {
+            result.push(0)
+        } else {
+            result.push(semiResult[id_list[j]])
+        }
     }
-    return result
+    return result;
 }
