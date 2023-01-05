@@ -1,9 +1,11 @@
 function solution(i, j, k) {
-    let result = 0
+    let arr = [];
+
     for (let x = i; x < j + 1; x++) {
-        if ('x'.includes('k')) {
-            result = result + 1
-        }
+        arr.push(x)
     }
+    let arrString = arr.join('')
+
+    let result = arrString.length - arrString.replaceAll(k.toString(),'').length
     return result;
 }
