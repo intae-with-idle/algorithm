@@ -1,23 +1,13 @@
 function solution(score) {
-    let result = [];
-    let averageScore = [];
+    let result = new Array(score.length).fill(1)
+    let average = score.map(e => (e[0] + e[1]) / 2)
 
-    for (let i = 0; i < score.length; i++) {
-        averageScore.push((score[i][0] + score[i][1]) / 2)
-    }
-
-    let averageRank = averageScore.sort(function (a, b) {
-        return b - a
-    });
-
-    for (let j = 0; j < averageRank.length; j++) {
-        for (let k = j + 1; k < averageRank.length; k++) {
-            if (j < k && averageRank[j] == averageRank[k]) {
-                result.push(j + 1)
-            } else {
-                result.push(j + 1)
+    for(let i = 0 ; i < average.length; i ++){
+        for(let j = 0 ; j < average.length; j++){
+            if(average[i] < average[j]){
+                result[i]++;
             }
-            return result;
         }
     }
+    return result
 } 
