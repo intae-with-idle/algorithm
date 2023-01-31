@@ -5,7 +5,7 @@ function solution(numbers, num1, num2) {
         result.push(numbers[i])
     }
     return result;
-}
+}s
 
 // -----------------------------------------------------------------------
 
@@ -20,3 +20,5 @@ function solution(numbers, num1, num2) {
 function solution(numbers, num1, num2) {
     return numbers.filter((n, i) => num1 <= i && i <= num2);
 }
+
+const solution = (numbers, num1, num2) => numbers.slice(num1, num2 + 1)
